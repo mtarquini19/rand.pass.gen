@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Homework 3: Password Generator</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="page">Generate Your Password Here: </h1>
+        <h3 class="password-display" id ="passwordDisplay">password</h3>
+        <form id="passwordGenerator" class="form">
+            <label for="characterAmountNumber"> Number of Characters: </label>
+
+            <div>
+                <input type="number" min="8" max="128" value="16" id="characterAmount">
+            </div>
+
+            <label for="includeUppers">To include upper case letters, check here: </label>
+            <input type="checkbox" id="includeUppers">
+
+            <label for="includeNumbers">To include numbers, check here: </label>
+            <input type="checkbox" id="includeNumbers">
+
+            <label for="includeSymbols">To include symbols, check here: </label>
+            <input type="checkbox" id="includeSymbols">
+
+            <button type="submit" class="btn"> Generate Password</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
