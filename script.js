@@ -1,50 +1,42 @@
-const characterAmountNumber = document.getElementById('characterAmountNumber')
-const includeUppersElement = document.getElementById('includeUppers')
-const includeNumbersElement = document.getElementById('includeNumbers')
-const includeSymbolsElement = document.getElementById('includeSymbols')
-const form = document.getElementById('passwordGenerator')
-const passwordDisplay = document.getElementById('passwordDisplay')
+// define variables
+var characterAmountNumber = document.getElementById("characterAmount")
+var includeUppersElement = document.getElementById("includeUppers")
+var includeNumbersElement = document.getElementById("includeNumbers")
+var includeSymbolsElement = document.getElementById("includeSymbols")
+var form = document.getElementById("passwordGenerator")
+var passwordDisplay = document.getElementById("passwordDisplay")
 
-const UPPER_CHAR_CODES = arrayLowToHigh(65, 90)
-const LOWER_CHAR_CODES = arrayLowToHigh(97, 122)
-const NUMBER_CHAR_CODES = arrayLowToHigh(48, 57)
-const SYMBOL_CHAR_CODES = arrayLowToHigh(33, 47).concat(arrayLowToHigh(58, 64)).concat(arrayLowToHigh(91, 96)).concat(arrayLowToHigh(123, 126))
+var UPPER_CHAR_CODES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+var LOWER_CHAR_CODES = "abcdefghijklmnopqrstuvwxyz".split("")
+var NUMBER_CHAR_CODES = "1234567890".split("")
+var SYMBOL_CHAR_CODES = "!@#$%^&*()?".split("")
 
-characterAmountNumber.addEventListener('input', syncCharacterAmount)
+// add "copy to clipboard" button
+// edit password screen to fit entire password
 
-form.addEventListener('submit', e => {
+// get info from user inputs
+form.addEventListener("submit", e => {
     e.preventDefault()
-    const characterAmount = characterAmountNumber.value
-    const includeUppers = includeUppersElement.checked
-    const includeNumbers = includeNumbersElement.checked
-    const includeSymbols = includeSymbolsElement.checked
-    const password = genPass(characterAmount, includeUppers, includeNumbers, includeSymbols)
+    var characterAmount = characterAmountNumber.value
+    var includeUppers = includeUppersElement.checked
+    var includeNumbers = includeNumbersElement.checked
+    var includeSymbols = includeSymbolsElement.checked
+    var password = genPass(characterAmount, includeUppers, includeNumbers, includeSymbols)
     passwordDisplay.innerText = password
 })
 
+// create function to randomly generate password based off user inputs
 function genPass(characterAmount, includeUppers, includeNumbers, includeSymbols) {
     let charCodes = LOWER_CHAR_CODES
     if (includeUppers) charCodes = charCodes.concat(UPPER_CHAR_CODES)
     if (includeNumbers) charCodes = charCodes.concat(NUMBER_CHAR_CODES)
     if (includeSymbols) charCodes = charCodes.concat(SYMBOL_CHAR_CODES)
     
-    const passwordCharacters = []
+    var passwordCharacters = []
     for (let i = 0; i < characterAmount; i++){
-        const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-        passwordCharacters.push(string.fromCharCode(characterCode))
+        var characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
+        console.log(characterCode)
+        passwordCharacters.push(characterCode)
     }
     return passwordCharacters.join('')
-}
-
-function arrayLowToHigh(low, high) {
-    const array = []
-    for (let i = low; i <= high; i++) {
-        array.push(i)
-    }
-    return array
-}
-
-function syncCharacterAmount(e) {
-    const value = e.target.value
-    characterAmountNumber.value = value
 }

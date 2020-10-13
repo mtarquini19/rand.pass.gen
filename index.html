@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Homework 3: Password Generator</title>
 </head>
@@ -14,9 +13,9 @@
     <div class="container">
 
         <h1 class="page">Generate Your Password Here: </h1>
-        <h3 class="password-display" id ="passwordDisplay">password</h3>
+        <h3 class="password-display" id ="passwordDisplay">password will display here</h3>
         <form id="passwordGenerator" class="form">
-            <label for="characterAmountNumber"> Number of Characters: </label>
+            <label for="characterAmountNumber"> Please choose a number of characters between 8 - 128</label>
 
             <div>
                 <input type="number" min="8" max="128" value="16" id="characterAmount">
@@ -31,12 +30,12 @@
             <label for="includeSymbols">To include symbols, check here: </label>
             <input type="checkbox" id="includeSymbols">
 
-            <button type="submit" class="btn"> Generate Password</button>
+            <button type="submit" id="generatePasswordBtn" class="btn"> Generate Password</button>
 
         </form>
 
     </div>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
